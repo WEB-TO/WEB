@@ -3,9 +3,10 @@
 {% block title %}Customer index{% endblock %}
 
 {% block body %}
-    <h1>Customer index</h1>
-
-    <table class="table">
+    <h1>Customer List</h1>
+    <a href="{{ path('app_customer_new') }}">Create new</a>
+    
+    <table id="product" class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr>
                 <th>Id</th>
@@ -35,5 +36,4 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_customer_new') }}">Create new</a>
 {% endblock %}

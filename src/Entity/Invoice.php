@@ -46,14 +46,16 @@ class Invoice
     private $quantity;
 
     /**
-     * @ORM\OneToMany(targetEntity=InvoiceProduct::class, mappedBy="invoice", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=InvoiceDetail::class, mappedBy="invoice", orphanRemoval=true)
      */
-    private $invoiceProducts;
+    private $invoiceDetails;
 
     public function __construct()
     {
-        $this->invoiceProducts = new ArrayCollection();
+        $this->invoiceDetails = new ArrayCollection();
     }
+
+
 
     public function getId(): ?int
     {
@@ -109,29 +111,29 @@ class Invoice
     }
 
     /**
-     * @return Collection<int, InvoiceProduct>
+     * @return Collection<int, InvoiceDetail>
      */
-    public function getInvoiceProducts(): Collection
+    public function getInvoiceDetails(): Collection
     {
-        return $this->invoiceProducts;
+        return $this->invoiceDetails;
     }
 
-    public function addInvoiceProduct(InvoiceProduct $invoiceProduct): self
+    public function addInvoiceDetail(InvoiceDetail $invoiceDetail): self
     {
-        if (!$this->invoiceProducts->contains($invoiceProduct)) {
-            $this->invoiceProducts[] = $invoiceProduct;
-            $invoiceProduct->setInvoice($this);
+        if (!$this->invoiceDetails->contains($invoiceDetail)) {
+            $this->invoiceDetails[] = $invoiceDetail;
+            $invoiceDetail->setInvoice($this);
         }
 
         return $this;
     }
 
-    public function removeInvoiceProduct(InvoiceProduct $invoiceProduct): self
+    public function removeInvoiceDetail(InvoiceDetail $invoiceDetail): self
     {
-        if ($this->invoiceProducts->removeElement($invoiceProduct)) {
+        if ($this->invoiceDetails->removeElement($invoiceDetail)) {
             // set the owning side to null (unless already changed)
-            if ($invoiceProduct->getInvoice() === $this) {
-                $invoiceProduct->setInvoice(null);
+            if ($invoiceDetail->getInvoice() === $this) {
+                $invoiceDetail->setInvoice(null);
             }
         }
 

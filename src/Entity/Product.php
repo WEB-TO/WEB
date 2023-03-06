@@ -18,7 +18,7 @@ class Product
      * @ORM\Column(type="integer")
      */
     private $id;
-
+    
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -46,14 +46,16 @@ class Product
     private $quantity;
 
     /**
-     * @ORM\OneToMany(targetEntity=InvoiceProduct::class, mappedBy="product", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=InvoiceDetail::class, mappedBy="product", orphanRemoval=true)
      */
-    private $invoiceProducts;
+    private $invoiceDetails;
 
     public function __construct()
     {
-        $this->invoiceProducts = new ArrayCollection();
+        $this->invoiceDetails = new ArrayCollection();
     }
+
+
 
     public function getId(): ?int
     {
@@ -120,38 +122,38 @@ class Product
         return $this;
     }
 
-    /**
-     * @return Collection<int, InvoiceProduct>
-     */
-    public function getInvoiceProducts(): Collection
+    public function __toString() 
     {
-        return $this->invoiceProducts;
+       return $this->name; 
     }
 
-    public function addInvoiceProduct(InvoiceProduct $invoiceProduct): self
+    /**
+     * @return Collection<int, InvoiceDetail>
+     */
+    public function getInvoiceDetails(): Collection
     {
-        if (!$this->invoiceProducts->contains($invoiceProduct)) {
-            $this->invoiceProducts[] = $invoiceProduct;
-            $invoiceProduct->setProduct($this);
+        return $this->invoiceDetails;
+    }
+
+    public function addInvoiceDetail(InvoiceDetail $invoiceDetail): self
+    {
+        if (!$this->invoiceDetails->contains($invoiceDetail)) {
+            $this->invoiceDetails[] = $invoiceDetail;
+            $invoiceDetail->setProduct($this);
         }
 
         return $this;
     }
 
-    public function removeInvoiceProduct(InvoiceProduct $invoiceProduct): self
+    public function removeInvoiceDetail(InvoiceDetail $invoiceDetail): self
     {
-        if ($this->invoiceProducts->removeElement($invoiceProduct)) {
+        if ($this->invoiceDetails->removeElement($invoiceDetail)) {
             // set the owning side to null (unless already changed)
-            if ($invoiceProduct->getProduct() === $this) {
-                $invoiceProduct->setProduct(null);
+            if ($invoiceDetail->getProduct() === $this) {
+                $invoiceDetail->setProduct(null);
             }
         }
 
         return $this;
-    }
-
-    public function __toString() 
-    {
-       return $this->name; 
     }
 }

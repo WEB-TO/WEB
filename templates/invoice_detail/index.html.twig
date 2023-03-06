@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}InvoiceDetail index{% endblock %}
+
+{% block body %}
+    <h1>Invoice Detail List</h1>
+
+    <a href="{{ path('app_invoice_detail_new') }}">Create new</a>
+
+    <table id="product" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Invoice Id</th>
+                <th>Product Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for invoice_detail in invoice_details %}
+            <tr>
+                <td>{{ invoice_detail.id }}</td>
+                <td>{{ invoice_detail.invoice.id }}</td>
+                <td>{{ invoice_detail.product.id }}</td>
+                <td>
+                    <a href="{{ path('app_invoice_detail_show', {'id': invoice_detail.id}) }}">show</a>
+                    <a href="{{ path('app_invoice_detail_edit', {'id': invoice_detail.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

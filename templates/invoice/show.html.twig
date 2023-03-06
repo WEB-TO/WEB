@@ -12,6 +12,14 @@
                 <td>{{ invoice.id }}</td>
             </tr>
             <tr>
+                <th>Customer Id</th>
+                <td>{{ invoice.customer.id }}</td>
+            </tr>
+            <tr>
+                <th>Staff Id</th>
+                <td>{{ invoice.staff.id }}</td>
+            </tr>
+            <tr>
                 <th>Date</th>
                 <td>{{ invoice.date ? invoice.date|date('Y-m-d H:i:s') : '' }}</td>
             </tr>

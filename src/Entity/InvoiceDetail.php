@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\InvoiceProductRepository;
+use App\Repository\InvoiceDetailRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=InvoiceProductRepository::class)
+ * @ORM\Entity(repositoryClass=InvoiceDetailRepository::class)
  */
-class InvoiceProduct
+class InvoiceDetail
 {
     /**
      * @ORM\Id
@@ -18,17 +18,13 @@ class InvoiceProduct
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Invoice::class, inversedBy="invoiceProducts")
+     * @ORM\ManyToOne(targetEntity=Invoice::class, inversedBy="invoiceDetails")
      * @ORM\JoinColumn(nullable=false)
      */
     private $invoice;
-    public function __toString() 
-    {
-       return (String)$this->id; 
-    }
 
     /**
-     * @ORM\ManyToOne(targetEntity=Product::class, inversedBy="invoiceProducts")
+     * @ORM\ManyToOne(targetEntity=Product::class, inversedBy="invoiceDetails")
      * @ORM\JoinColumn(nullable=false)
      */
     private $product;
