@@ -22,6 +22,10 @@ class InvoiceProduct
      * @ORM\JoinColumn(nullable=false)
      */
     private $invoice;
+    public function __toString() 
+    {
+       return (String)$this->id; 
+    }
 
     /**
      * @ORM\ManyToOne(targetEntity=Product::class, inversedBy="invoiceProducts")
