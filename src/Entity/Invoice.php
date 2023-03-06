@@ -18,6 +18,10 @@ class Invoice
      * @ORM\Column(type="integer")
      */
     private $id;
+    public function __toString() 
+    {
+       return (String)$this->id; 
+    }
 
     /**
      * @ORM\ManyToOne(targetEntity=Customer::class, inversedBy="invoices")
@@ -133,4 +137,7 @@ class Invoice
 
         return $this;
     }
+
+    
+
 }
