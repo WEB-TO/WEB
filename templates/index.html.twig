@@ -1,0 +1,89 @@
+{% block topmenu %}
+<!DOCTYPE html>
+<html>
+     <header>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.3/css/dataTables.bootstrap5.min.css">
+    </header>
+    <style>
+    h1 {
+    font-family: Fantasy;
+    font-size: 150%;
+    font-weight:bold;
+    color:#77D4FC;
+    padding: 0 5px;
+    border-right:1px solid #4B91F1;
+    text-transform:uppercase;
+    text-decoration:none;
+    text-align: center;
+    margin: 25px 50px;
+    }
+    body {
+    background-color: #EF7DAA;
+    }
+    a{ 
+        color: #ff0000;
+    }
+    p {
+        color: #ffffff;
+    }
+    .nav-item{
+          font-size:15px;
+          font-weight:bold;
+          color:#77D4FC;
+          padding: 0 5px;
+          border-right:1px solid ##4B91F1;
+          text-transform:uppercase;
+          text-decoration:none;
+    }
+    </style>
+    <body> 
+    <section class="myheader bg-light" >
+            <div class="container ">
+                <div class="row">
+                    <div class="col-md-2 py-2">
+                        <img src="{{ asset('image/logo.png') }}" class="img-fluid" style="width:120px;height:72px; alt="Logo">
+                    </div>
+                    <div class="col-md-7 py-4">
+                       <div>
+                          <ul class="nav justify-content-center">
+                          <li class="nav-item">
+                              <a class="nav-link" href="{{ path('app_home') }}">Home</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="{{ path('app_product_index') }}">Product</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="{{ path('app_category_index') }}">Category</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="{{ path('app_staff_index') }}">Staffs</a
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="{{ path('app_customer_index') }}">Customers</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="{{ path('app_invoice_index') }}">Invoice</a>
+                            </li> 
+                          </ul> 
+                      </div>
+                    </div>
+                    <div class="col-md-3 py-4">
+                      <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search product" aria-label="Search product">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                      </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js" ></script>
+    <script src="https://cdn.datatables.net/1.13.3/js/dataTables.bootstrap5.min.js" ></script>
+    <script>
+    $(document).ready(function() {
+      $('#product').DataTable();
+    });
+    </script>
+    </body>
+{% endblock%}
