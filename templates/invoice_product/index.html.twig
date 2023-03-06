@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}InvoiceProduct index{% endblock %}
+
+{% block body %}
+    <h1>InvoiceProduct index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for invoice_product in invoice_products %}
+            <tr>
+                <td>{{ invoice_product.id }}</td>
+                <td>
+                    <a href="{{ path('app_invoice_product_show', {'id': invoice_product.id}) }}">show</a>
+                    <a href="{{ path('app_invoice_product_edit', {'id': invoice_product.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_invoice_product_new') }}">Create new</a>
+{% endblock %}
